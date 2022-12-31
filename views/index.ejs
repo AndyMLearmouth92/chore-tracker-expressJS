@@ -22,7 +22,7 @@
     <h1>Monday's chores: </h1>
     <ul class="todoItems">
     <% for(let i=0; i < items.length; i++) {%>
-        <% if(items[i].day === "monday") {%>
+        <% if(items[i].day.toLowerCase() === "monday") {%>
         <li class="item">
                 <% if(items[i].completed === true) {%>
                     <span class='completed'><%= items[i].chore %></span>
@@ -43,7 +43,7 @@
     <ul class="todoItems">
 
     <% for(let i=0; i < items.length; i++) {%>
-        <% if(items[i].day === "tuesday") {%>
+        <% if(items[i].day.toLowerCase() === "tuesday") {%>
         <li class="item">
             <% if(items[i].completed === true) {%>
                 <span class='completed'><%= items[i].chore %></span>
@@ -64,7 +64,7 @@
     <ul class="todoItems">
 
     <% for(let i=0; i < items.length; i++) {%>
-        <% if(items[i].day === "wednesday") {%>
+        <% if(items[i].day.toLowerCase() === "wednesday") {%>
         <li class="item">
             <% if(items[i].completed === true) {%>
                 <span class='completed'><%= items[i].chore %></span>
@@ -85,7 +85,7 @@
     <ul class="todoItems">
 
     <% for(let i=0; i < items.length; i++) {%>
-        <% if(items[i].day === "thursday") {%>
+        <% if(items[i].day.toLowerCase() === "thursday") {%>
         <li class="item">
             <% if(items[i].completed === true) {%>
                 <span class='completed'><%= items[i].chore %></span>
@@ -106,7 +106,7 @@
     <ul class="todoItems">
 
     <% for(let i=0; i < items.length; i++) {%>
-        <% if(items[i].day === "friday") {%>
+        <% if(items[i].day.toLowerCase() === "friday") {%>
         <li class="item">
             <% if(items[i].completed === true) {%>
                 <span class='completed'><%= items[i].chore %></span>
