@@ -18,38 +18,107 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- Creates H1 -->
-    <h1>Todo List: </h1>
-    <!-- Creates ul -->
+    <h1>Monday's chores: </h1>
     <ul class="todoItems">
-        <!-- Loops through each document from our MongoDB collection which comes from the server and creates a new li for each item -->
     <% for(let i=0; i < items.length; i++) {%>
+        <% if(items[i].day === "monday") {%>
         <li class="item">
-            <!-- Conditional syntax to check if the document in the MongoDB database has a completed property of true. If so, add the class of completed to the span when it puts the item into the DOM. The class will add strikethrough and turn the text grey. -->
-            <% if(items[i].completed === true) {%>
-                <span class='completed'><%= items[i].thing %></span>
-                <!-- If the item has a completed property of false then it creates a span without a class and puts the items name within. -->
-            <% }else{ %>
-                <span><%= items[i].thing %></span>
-            <% } %>    
-            <!-- Adds the trash can to each span item. -->
-            <span class='fa fa-trash'></span>
+                <% if(items[i].completed === true) {%>
+                    <span class='completed'><%= items[i].thing %></span>
+                <% }else{ %>
+                    <span><%= items[i].thing %></span>
+                <% } %>   
+                <span class='fa fa-trash'></span> 
+                <% } %>
         </li>
     <% } %>
     </ul>
 
-<!-- Number of items left to do -->
-    <h2>Left to do: <%= left %></h2>
+    <h4>Left to do:<%= leftMon %> </h4>
 
-<!-- Add a todo item using the form below and the H2 is a heading. -->
+    <h1>Tuesday's chores: </h1>
+    <ul class="todoItems">
+
+    <% for(let i=0; i < items.length; i++) {%>
+        <% if(items[i].day === "tuesday") {%>
+        <li class="item">
+            <% if(items[i].completed === true) {%>
+                <span class='completed'><%= items[i].thing %></span>
+            <% }else{ %>
+                <span><%= items[i].thing %></span>
+            <% } %>   
+            <span class='fa fa-trash'></span> 
+            <% } %>
+        </li>
+    <% } %>
+    </ul>
+
+    <h4>Left to do:<%= leftTues %> </h4>
+
+    <h1>Wednesday's chores: </h1>
+    <ul class="todoItems">
+
+    <% for(let i=0; i < items.length; i++) {%>
+        <% if(items[i].day === "wednesday") {%>
+        <li class="item">
+            <% if(items[i].completed === true) {%>
+                <span class='completed'><%= items[i].thing %></span>
+            <% }else{ %>
+                <span><%= items[i].thing %></span>
+            <% } %>   
+            <span class='fa fa-trash'></span> 
+            <% } %>
+        </li>
+    <% } %>
+    </ul>
+
+    <h4>Left to do:<%= leftWed %> </h4>
+
+    <h1>Thursday's chores: </h1>
+    <ul class="todoItems">
+
+    <% for(let i=0; i < items.length; i++) {%>
+        <% if(items[i].day === "thursday") {%>
+        <li class="item">
+            <% if(items[i].completed === true) {%>
+                <span class='completed'><%= items[i].thing %></span>
+            <% }else{ %>
+                <span><%= items[i].thing %></span>
+            <% } %>   
+            <span class='fa fa-trash'></span> 
+            <% } %>
+        </li>
+    <% } %>
+    </ul>
+
+    <h4>Left to do:<%= leftThurs %> </h4>
+
+    <h1>Friday's chores: </h1>
+    <ul class="todoItems">
+
+    <% for(let i=0; i < items.length; i++) {%>
+        <% if(items[i].day === "friday") {%>
+        <li class="item">
+            <% if(items[i].completed === true) {%>
+                <span class='completed'><%= items[i].thing %></span>
+            <% }else{ %>
+                <span><%= items[i].thing %></span>
+            <% } %>   
+            <span class='fa fa-trash'></span> 
+            <% } %>
+        </li>
+    <% } %>
+    </ul>
+
+    <h4>Left to do:<%= leftFri %> </h4>
+
     <h2>Add A Todo:</h2>
-<!-- Action gives a route for the server to listen for -->
     <form action="/addTodo" method="POST">
         <input type="text" placeholder="Thing To Do" name="todoItem">
+        <input type="text" placeholder="Day" name="day">
         <input type="submit">
     </form>
     
-<!-- Links the client side JS -->
     <script src='js/main.js'></script>
 </body>
 </html>

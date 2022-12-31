@@ -34,8 +34,13 @@ app.get('/',async (request, response)=>{
     const todoItems = await db.collection('todos').find().toArray()
     //Counts documents which have a completed status of false.
     const itemsLeft = await db.collection('todos').countDocuments({completed: false})
+    const itemsLeftMonday = await db.collection('todos').countDocuments({day: 'monday', completed: false})
+    const itemsLeftTuesday = await db.collection('todos').countDocuments({day: 'tuesday', completed: false})
+    const itemsLeftWednesday = await db.collection('todos').countDocuments({day: 'wednesday', completed: false})
+    const itemsLeftThursday = await db.collection('todos').countDocuments({day: 'thursday', completed: false})
+    const itemsLeftFriday = await db.collection('todos').countDocuments({day: 'friday', completed: false})
     // Response should render HTML in the DOM using the information grabbed above.
-    response.render('index.ejs', { items: todoItems, left: itemsLeft })
+    response.render('index.ejs', { items: todoItems, left: itemsLeft, leftMon: itemsLeftMonday, leftTues: itemsLeftTuesday, leftWed: itemsLeftWednesday, leftThurs: itemsLeftThursday, leftFri: itemsLeftFriday})
     // db.collection('todos').find().toArray()
     // .then(data => {
     //     db.collection('todos').countDocuments({completed: false})
@@ -46,24 +51,17 @@ app.get('/',async (request, response)=>{
     // .catch(error => console.error(error))
 })
 
-// API listening for a Create / post request. This is an action linked to the form on the index.ejs.
 app.post('/addTodo', (request, response) => {
-    //Inserts the item text requested by the client side JS and sets the completed status to false as default. The request body contains the item text which will be used to create the document in the database.
-    db.collection('todos').insertOne({thing: request.body.todoItem, completed: false})
-    //Responds by console logging that the todo has been added and tells the browser to refresh.
+    db.collection('todos').insertOne({thing: request.body.todoItem, completed: false, day: request.body.day})
     .then(result => {
         console.log('Todo Added')
         response.redirect('/')
     })
-    //Error catching
     .catch(error => console.error(error))
 })
 
-// API listening for a update / put request on the markComplete route. This is linked to the main.JS fetch
 app.put('/markComplete', (request, response) => {
-// Goes to MongoDB collection of todos and updates a document. The request body contains the item text which will be used to match to the document in the database so that it can be updated.
     db.collection('todos').updateOne({thing: request.body.itemFromJS},{
-        //Changed the completed property from false to true to signal that it has been completed.
         $set: {
             completed: true
           }
