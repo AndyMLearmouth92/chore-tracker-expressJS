@@ -18,15 +18,16 @@
     <title>Document</title>
 </head>
 <body>
+    <section>
     <h1>Monday's chores: </h1>
     <ul class="todoItems">
     <% for(let i=0; i < items.length; i++) {%>
         <% if(items[i].day === "monday") {%>
         <li class="item">
                 <% if(items[i].completed === true) {%>
-                    <span class='completed'><%= items[i].thing %></span>
+                    <span class='completed'><%= items[i].chore %></span>
                 <% }else{ %>
-                    <span><%= items[i].thing %></span>
+                    <span><%= items[i].chore %></span>
                 <% } %>   
                 <span class='fa fa-trash'></span> 
                 <% } %>
@@ -35,7 +36,9 @@
     </ul>
 
     <h4>Left to do:<%= leftMon %> </h4>
+</section>
 
+<section>
     <h1>Tuesday's chores: </h1>
     <ul class="todoItems">
 
@@ -43,9 +46,9 @@
         <% if(items[i].day === "tuesday") {%>
         <li class="item">
             <% if(items[i].completed === true) {%>
-                <span class='completed'><%= items[i].thing %></span>
+                <span class='completed'><%= items[i].chore %></span>
             <% }else{ %>
-                <span><%= items[i].thing %></span>
+                <span><%= items[i].chore %></span>
             <% } %>   
             <span class='fa fa-trash'></span> 
             <% } %>
@@ -54,7 +57,9 @@
     </ul>
 
     <h4>Left to do:<%= leftTues %> </h4>
+</section>
 
+<section>
     <h1>Wednesday's chores: </h1>
     <ul class="todoItems">
 
@@ -62,9 +67,9 @@
         <% if(items[i].day === "wednesday") {%>
         <li class="item">
             <% if(items[i].completed === true) {%>
-                <span class='completed'><%= items[i].thing %></span>
+                <span class='completed'><%= items[i].chore %></span>
             <% }else{ %>
-                <span><%= items[i].thing %></span>
+                <span><%= items[i].chore %></span>
             <% } %>   
             <span class='fa fa-trash'></span> 
             <% } %>
@@ -73,7 +78,9 @@
     </ul>
 
     <h4>Left to do:<%= leftWed %> </h4>
+</section>
 
+<section>
     <h1>Thursday's chores: </h1>
     <ul class="todoItems">
 
@@ -81,9 +88,9 @@
         <% if(items[i].day === "thursday") {%>
         <li class="item">
             <% if(items[i].completed === true) {%>
-                <span class='completed'><%= items[i].thing %></span>
+                <span class='completed'><%= items[i].chore %></span>
             <% }else{ %>
-                <span><%= items[i].thing %></span>
+                <span><%= items[i].chore %></span>
             <% } %>   
             <span class='fa fa-trash'></span> 
             <% } %>
@@ -92,7 +99,9 @@
     </ul>
 
     <h4>Left to do:<%= leftThurs %> </h4>
+</section>
 
+<section>
     <h1>Friday's chores: </h1>
     <ul class="todoItems">
 
@@ -100,9 +109,9 @@
         <% if(items[i].day === "friday") {%>
         <li class="item">
             <% if(items[i].completed === true) {%>
-                <span class='completed'><%= items[i].thing %></span>
+                <span class='completed'><%= items[i].chore %></span>
             <% }else{ %>
-                <span><%= items[i].thing %></span>
+                <span><%= items[i].chore %></span>
             <% } %>   
             <span class='fa fa-trash'></span> 
             <% } %>
@@ -111,13 +120,16 @@
     </ul>
 
     <h4>Left to do:<%= leftFri %> </h4>
+</section>
 
-    <h2>Add A Todo:</h2>
+<section class="form">
+    <h2>Add A Chore:</h2>
     <form action="/addTodo" method="POST">
-        <input type="text" placeholder="Thing To Do" name="todoItem">
+        <input type="text" placeholder="Chore" name="todoItem">
         <input type="text" placeholder="Day" name="day">
         <input type="submit">
     </form>
+</section>
     
     <script src='js/main.js'></script>
 </body>
